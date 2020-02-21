@@ -7,9 +7,24 @@
     "express": "^4.17.1",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "faker": "^4.1.0",
+    "jest": "^25.1.0",
+    "mocha": "^6.2.1",
+    "sinon": "^7.5.0",
+    "supertest": "^4.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --forceExit --colors --coverage"
+  },
+  "jest": {
+   "collectCoverage": true,
+   "coverageReporters": ["json", "html"],
+   "testEnvironment": "node",
+   "coveragePathIgnorePatterns": [
+     "/node_modules/"
+   ]
   },
   "author": "",
   "license": "ISC"

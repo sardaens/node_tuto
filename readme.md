@@ -29,3 +29,13 @@ cf async0.js
 > use of request.
 
 cf server.js
+
+# TESTS avec Stub (lib : sinon)
+
+## Tests :
+Utilisation de sinon :
+ - stub de la methode callNasa()  contenu dans le module nasaClient
+  yields permet de fournir les données de retrou du callback ,ici noter callback posse de deux parametres err, body
+ - on utilise supertest pour appeler les apis définies dans les routes
+
+cf /tests/server0.test.js

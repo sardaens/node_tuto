@@ -1,19 +1,32 @@
 const express = require('express');
 const app = express();
-const request = require('request');
 
-app.get('/nasa', (req,resp) => {
+const nasaclient = require('./client/nasaclient');
 
-  request('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY2', (err,res,body) => {
 
-    if (err) { return console.error(err); }
-    resp.send(body);
+app.get('/nasa', async (req,resp) => {
+  console.log("call /nasa");
+  nasaclient.callNasa( (err, body) => {
+    console.log("error" + err);
+    console.log("body" + body);
+      if (err) {
+
+         console.error(err);
+         resp.send(400, err);
+         return;
+      }
+      resp.send(200, body);
 
   });
 
 
 });
 
+app.listen(3000);
+
+/*
 app.listen(3000, () =>{
   console.log('Listen on port 3000');
 });
+*/
+module.exports = app;
